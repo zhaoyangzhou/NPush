@@ -1,0 +1,119 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#F0F1F3" >
+
+    <com.push.m.widget.HeaderOnlyBackButtonView
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/lightbluegreen" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/send_msg_layout"
+        android:layout_below="@+id/header" >
+
+        <ListView
+            android:id="@+id/mChatListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="#00000000"
+            android:divider="@null"
+            android:dividerHeight="5dp"
+            android:listSelector="#00000000"
+            android:scrollbarStyle="outsideOverlay"
+            android:transcriptMode="normal" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:background="@color/lightgray" />
+
+    <LinearLayout
+        android:id="@+id/send_msg_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp" >
+
+        <ImageButton
+            android:id="@+id/switchVoice"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/chatting_setmode_voice_btn_normal"
+            android:gravity="center" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/etMsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/chat_input_bg"
+                android:cursorVisible="true"
+                android:gravity="start"
+                android:inputType="textMultiLine"
+                android:padding="5dp"
+                android:textColor="#000000"
+                android:textCursorDrawable="@drawable/text_cursor_bg" />
+
+            <com.push.m.record.RecordButton
+                android:id="@+id/btnRecord"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_border"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/label2_font_size"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" >
+
+            <Button
+                android:id="@+id/btnSendMsg"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:background="@drawable/button_border"
+                android:gravity="center_horizontal|center_vertical"
+                android:padding="5dp"
+                android:text="发送"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/label3_font_size"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:gravity="center" >
+
+                <ImageButton
+                    android:id="@+id/btnAddFile"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/type_select_btn_nor"
+                    android:focusable="true" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+</RelativeLayout>

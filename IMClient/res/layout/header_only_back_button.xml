@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/header_height"
+    android:layout_gravity="top" >
+
+    <LinearLayout
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/selector_background" >
+        <ImageView
+	        android:layout_width="@dimen/header_back_button_width"
+	        android:layout_height="@dimen/header_back_button_height"
+	        android:layout_gravity="center_vertical"
+	        android:src="@drawable/btn_back" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@+id/blank"
+        android:layout_toRightOf="@+id/btnBack"
+        android:gravity="center"
+        android:singleLine="true"
+		android:ellipsize="marquee"
+		android:focusableInTouchMode="true"
+		android:focusable="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:textColor="@color/white"
+        android:textSize="@dimen/title_font_size" >
+    </TextView>
+
+    <View 
+        android:id="@+id/blank"
+        android:layout_alignParentRight="true"
+        android:layout_width="@dimen/header_back_button_width"
+	    android:layout_height="@dimen/header_back_button_height"
+	    android:layout_marginLeft="30dp"
+	    android:visibility="invisible" />
+</RelativeLayout>

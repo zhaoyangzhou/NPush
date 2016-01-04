@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 发送语音消息 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="13dp" >
+	
+    <TextView
+        android:id="@+id/sendTimeTxt"
+        style="@style/chat_text_date_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+    
+		
+	<RelativeLayout 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="5dp"
+	    android:paddingRight="5dp"
+	    android:layout_gravity="center_vertical" >
+	    
+	    <ImageView 
+	        android:id="@+id/ivSending"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toLeftOf="@+id/tvSendDuration"
+	        android:layout_marginLeft="3dp"
+	        android:layout_centerVertical="true"
+	        android:src="@drawable/sending_img" />
+	    
+	    <ImageView 
+	        android:id="@+id/ivReSend"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toLeftOf="@+id/tvSendDuration"
+	        android:layout_marginLeft="3dp"
+	        android:layout_centerVertical="true"
+	        android:visibility="gone"
+	        android:src="@drawable/send_error" />
+	    
+	    <TextView 
+	        android:id="@+id/tvSendDuration"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" 
+	        android:layout_toLeftOf="@+id/tvSendMsg"
+	        android:layout_marginLeft="3dp"
+	        android:layout_centerVertical="true"
+	        android:visibility="gone" />
+	    
+	    <TextView 
+	        android:id="@+id/tvSendMsg"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toLeftOf="@+id/ivMeHeader"
+	        android:layout_marginRight="3dp"
+	        android:background="@drawable/msg_send_bg"
+	        android:minHeight="50dp"
+	        android:maxWidth="220dp"
+	        style="@style/msg_text_style" />
+	    
+        <ImageView
+            android:id="@+id/ivSendVolumn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/tvSendMsg"
+	        android:layout_centerInParent="true"
+	        android:layout_marginLeft="10dp"
+        	android:background="@drawable/send_2" />
+	    
+	    <com.push.m.widget.CircularImageView
+	        android:id="@+id/ivMeHeader"
+	        android:layout_width="@dimen/header_size"
+	        android:layout_height="@dimen/header_size"
+		    android:layout_alignParentRight="true"
+	        android:src="@drawable/default_head"
+	        app:border="true"
+	        app:border_color="@color/lightgray"
+	        app:border_width="2dp"
+	        app:shadow="true" />
+	</RelativeLayout>
+	
+</LinearLayout>

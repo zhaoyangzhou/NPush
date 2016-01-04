@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    <LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_vertical"
+	    android:gravity="center_vertical"
+	    android:padding="8dp"
+	    android:orientation="horizontal"
+	    android:background="@drawable/selector_background" >
+	
+        <com.push.m.widget.CircularImageView
+            android:id="@+id/ivHeader"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/default_head"
+            app:border="true"
+            app:border_color="@color/lightgray"
+            app:border_width="2dp"
+            app:shadow="true" />
+	
+	    <RelativeLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp" >
+	
+	        <TextView
+	            android:id="@+id/tvFriendName"
+	            android:layout_width="wrap_content"
+	            android:layout_height="match_parent"
+	            android:layout_alignParentLeft="true"
+	            android:layout_alignParentTop="true"
+	            android:gravity="center_vertical"
+	            android:text="昵称"
+	            android:textSize="@dimen/label2_font_size" />
+	        
+	        <TextView
+	            android:id="@+id/tvOnline"
+	            android:layout_width="wrap_content"
+	            android:layout_height="match_parent"
+	            android:layout_toRightOf="@+id/tvFriendName"
+	            android:layout_alignParentTop="true"
+	            android:gravity="center_vertical"
+	            android:text="(离线)"
+	            android:textSize="@dimen/label2_font_size" />
+	
+	    </RelativeLayout>
+	</LinearLayout>
+</LinearLayout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.push.m"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="11" />
+
+    <!-- 网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 录音权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 存储读写权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 系统启动 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- 震动 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    
+    <application
+        android:name="com.push.m.AppApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.push.m.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- 好友列表 -->
+        <activity
+            android:name="com.push.m.activity.FriendListActivity" >
+        </activity>
+        <!-- 聊天界面 -->
+        <activity
+            android:name="com.push.m.activity.ChatActivity" >
+        </activity>
+        <!-- 推送消息详情界面 -->
+        <activity
+            android:name="com.push.m.activity.PushMessageDetailActivity" >
+        </activity>
+        <!-- 弹出菜单 -->
+        <activity
+            android:name="com.push.m.activity.ContextMenu" >
+        </activity>
+        
+        <!-- 推送服务 -->
+        <service
+            android:name="com.push.m.service.PushService"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.push.android.intent.PushService" />
+            </intent-filter>
+        </service>
+        
+        <!-- 接收系统广播，实现应用自动唤醒 -->
+        <receiver
+            android:name="com.push.m.receiver.SystemReceiver"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        
+        <!-- 接收推送消息 -->
+        <receiver
+            android:name="com.push.m.receiver.IMReceiver"
+            android:enabled="true"
+            android:exported="false" >
+            <!-- 推送消息、聊天消息 -->
+            <intent-filter android:priority="1000">
+                <action android:name="com.push.android.intent.MESSAGE_RECEIVED" />
+                <category android:name="com.push.m" />
+            </intent-filter>
+            <!-- 上线下线 -->
+            <intent-filter android:priority="1000">
+                <action android:name="com.push.android.intent.ONLINE_RECEIVED" />
+                <category android:name="com.push.m" />
+            </intent-filter>
+        </receiver>
+        
+        <!-- 上传文件请求地址 -->
+        <meta-data android:name="uploadUrl" android:value="IMServer/servlet/FileUploadServlet" />
+    </application>
+</manifest>

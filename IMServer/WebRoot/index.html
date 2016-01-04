@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>推送页面</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+		<meta http-equiv="description" content="This is my page">
+		<style type="text/css">
+		div {
+			margin: 20px 0px 20px 0px;
+		}
+		</style>
+		<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			function queryList() {
+				//查询终端列表
+				$.post("http://192.168.0.186:8088/IMServer/servlet/PushMessageServlet",
+			  	{
+			  		method: "findAllTags"
+			  	},
+			  	function(data, status){
+			  		if(status == "success") {
+			  			$("#tags").empty();
+			  			$("#cancelTags").empty();
+			  			
+			  			$("#cancelTags").append("<option value=''>--请选择--</option>");
+			  			$(data).each(function(index, row){
+			  				$("#tags").append("<option value='" + row["tag"] + "'>" + row["tag"] + "</option>");
+			  				$("#cancelTags").append("<option value='" + row["tag"] + "'>" + row["tag"] + "</option>");
+			  			});
+			  		}
+			  	});
+			}
+			function getExtraJson() {
+				var extras = {};
+				$("#extraPanel").children("#extraRow").each(function(index, row){
+					var key = $(row).children("#extraKey").val();
+					var value = $(row).children("#extraValue").val();
+					extras[key] = value;
+	  			});
+	  			return JSON.stringify(extras);
+			}
+			
+			queryList();
+			
+			$("#extraRow:first").children("#delete").css({"display": "none"});
+			
+			$("#add").click(function(evt){
+				var newExtraRow = $("#extraRow").clone(true);
+				newExtraRow.children("#delete").css({"display": ""});
+				$("#extraPanel").append(newExtraRow);
+			});
+			$("#delete").click(function(evt){
+				$(this).parent().remove();
+			});
+		  	
+			$("#send").click(function(evt){
+				var title = $("#title").val();
+				var msgContent = $("#msgContent").val();
+				var extras = getExtraJson();
+			  	$.post("http://192.168.0.186:8088/IMServer/servlet/PushMessageServlet",
+			  	{
+			  		method: "send",
+			  		tag: $("#tags").val(),
+			  		title: title,
+			    	msgContent: msgContent,
+			    	extras: extras
+			  	},
+			  	function(data, status){
+			  		$("#sendResult").html("Data: " + data + "\nStatus: " + status);
+			  	});
+			});
+			
+			$("#cancelTimeStart").focus(function(evt) {
+				var date = new Date();
+				var year = date.getFullYear();
+				var month = (date.getMonth()+1);
+				var day = date.getDate();
+				var hour = date.getHours();
+				var minute = date.getMinutes();
+				var second = date.getSeconds();
+				
+				month = month < 10 ? "0" + month : month;
+				day = day < 10 ? "0" + day : day;
+				hour = hour < 10 ? "0" + hour : hour;
+				minute = minute < 10 ? "0" + minute : minute;
+				second = second < 10 ? "0" + second : second;
+				var dateTime = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+			
+				$(this).val(dateTime);
+			});
+			
+			$("#cancelTimeEnd").focus(function(evt) {
+				var date = new Date();
+				var year = date.getFullYear();
+				var month = (date.getMonth()+1);
+				var day = date.getDate();
+				var hour = date.getHours();
+				var minute = date.getMinutes();
+				var second = date.getSeconds();
+				
+				month = month < 10 ? "0" + month : month;
+				day = day < 10 ? "0" + day : day;
+				hour = hour < 10 ? "0" + hour : hour;
+				minute = minute < 10 ? "0" + minute : minute;
+				second = second < 10 ? "0" + second : second;
+				var dateTime = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+				
+				$(this).val(dateTime);
+			});
+			
+			$("#cancel").click(function(evt) {
+				var cancelTag = $("#cancelTags").val();
+				var startDate = $("#cancelTimeStart").val();
+				var endDate = $("#cancelTimeEnd").val();
+				var startTime = null;
+				var endTime = null;
+				if(startDate != null && startDate != "" && endDate != null && endDate != "") {
+					startTime = new Date(startDate.replace(/-/g, "/")).getTime();
+					endTime = new Date(endDate.replace(/-/g, "/")).getTime();
+					if(startTime > endTime) {
+						var tempTime = startTime;
+						startTime = endTime;
+						endTime = tempTime;
+						
+						$("#cancelTimeStart").val(endDate);
+						$("#cancelTimeEnd").val(startDate);
+					}
+				}
+					
+				$.post("http://192.168.0.186:8088/IMServer/servlet/PushMessageServlet",
+			  	{
+			  		method: "cancel",
+			  		cancelTag: cancelTag,
+			    	startTime: startTime,
+			    	endTime: endTime
+			  	},
+			  	function(data, status){
+			  		if(status == "success")
+			  			$("#cancelResult").html("已成功删除" + data + "条记录");
+			  		else 
+			  			$("#cancelResult").html("删除失败");
+			  	});
+				
+			});
+		});
+		</script>
+	</head>
+
+	<body>
+		<div>
+			<span>标签：</span>
+			<select id="tags"></select>
+		</div>
+		<div>
+			<span>标题：</span>
+			<input id="title" value="标题" />
+		</div>
+		<div>
+			<textarea id="msgContent" rows="3" cols="100">测试</textarea>
+		</div>
+		<div id="extraPanel">
+			<span>附加字段：</span>
+			<div id="extraRow">
+				<span>Key</span><input id="extraKey"  />
+				<span>Value</span><input id="extraValue"  />
+				<button id="delete">删除</button>
+				<button id="add">增加</button>
+			</div>
+		</div>
+		<div>
+			<button id="send">发送</button>
+		</div>
+		<div id="sendResult"></div>
+		
+		<hr />
+		
+		<div>
+			<span>撤销条件：</span>
+		</div>
+		<div>
+			<span>标签：</span>
+			<select id="cancelTags"></select>
+		</div>
+		<div>
+			<span>开始时间：</span>
+			<input id="cancelTimeStart" />
+			<span>结束时间：</span>
+			<input id="cancelTimeEnd" />
+		</div>
+		<div>
+			<button id="cancel">撤销</button>
+		</div>
+		<div id="cancelResult"></div>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <servlet>
+    <description>启动推送服务</description>
+    <display-name>启动推送服务</display-name>
+    <servlet-name>StartServerServlet</servlet-name>
+    <servlet-class>com.push.m.servlet.StartServerServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <description>推送消息</description>
+    <display-name>推送消息</display-name>
+    <servlet-name>PushMessageServlet</servlet-name>
+    <servlet-class>com.push.m.servlet.PushMessageServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>文件上传下载</description>
+    <display-name>文件上传下载</display-name>
+    <servlet-name>FileUploadServlet</servlet-name>
+    <servlet-class>com.push.m.servlet.FileUploadServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>文件上传下载</description>
+    <display-name>文件上传下载</display-name>
+    <servlet-name>FileDownloadServlet</servlet-name>
+    <servlet-class>com.push.m.servlet.FileDownloadServlet</servlet-class>
+  </servlet>
+
+
+  <servlet-mapping>
+    <servlet-name>StartServerServlet</servlet-name>
+    <url-pattern>/servlet/StartServerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PushMessageServlet</servlet-name>
+    <url-pattern>/servlet/PushMessageServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FileUploadServlet</servlet-name>
+    <url-pattern>/servlet/FileUploadServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FileDownloadServlet</servlet-name>
+    <url-pattern>/servlet/FileDownloadServlet</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+</web-app>

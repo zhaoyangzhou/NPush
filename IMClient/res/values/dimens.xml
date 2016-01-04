@@ -1,0 +1,44 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+	<dimen name="slidingmenu_offset">70dp</dimen>
+    <dimen name="shadow_width">5dp</dimen>
+    
+    <dimen name="header_back_button_width">25dp</dimen>
+    <dimen name="header_back_button_height">25dp</dimen>
+    <dimen name="header_height">45dp</dimen>
+    <dimen name="header_for_parent_info">120dp</dimen>
+    <dimen name="header_for_teacher_info">272dp</dimen>
+    <dimen name="title_font_size">20dp</dimen>
+    <dimen name="other_button_font_size">16dp</dimen>
+    <dimen name="weekview_font_size">12dp</dimen>
+    <dimen name="label1_font_size">18dp</dimen>
+    <dimen name="label2_font_size">16dp</dimen>
+    <dimen name="label3_font_size">14dp</dimen>
+    <dimen name="label4_font_size">12dp</dimen>
+    <dimen name="label5_font_size">20dp</dimen>
+    <dimen name="label6_font_size">22dp</dimen>
+    <dimen name="label7_font_size">25dp</dimen>
+    <dimen name="label8_font_size">50dp</dimen>
+    <dimen name="label9_font_size">11dp</dimen>
+    <dimen name="label10_font_size">10dp</dimen>
+    <dimen name="label11_font_size">13dp</dimen>
+    <dimen name="label12_font_size">35dp</dimen>
+    <dimen name="label13_font_size">30dp</dimen>
+    
+    <dimen name="order_detail">12dp</dimen>
+    <dimen name="line_height">0.05dp</dimen>
+    
+    <dimen name="btn_width">80dp</dimen>
+    <dimen name="btn_height">33dp</dimen>
+    
+    <dimen name="default_btn_radius">5dp</dimen>
+    <dimen name="header_size">50dp</dimen>
+    
+    <dimen name="subject_icon_size">55dp</dimen>
+    <dimen name="tab_icon_size">24dp</dimen>
+    <dimen name="split_bar_height">40dp</dimen>
+    <dimen name="circle_radius">30dp</dimen>
+</resources>

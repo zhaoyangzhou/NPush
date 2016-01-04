@@ -1,0 +1,4 @@
+INFO main com.push.m.push.NativeHttpClient - executing request http://192.168.0.186:8088/IMServer/servlet/PushMessageServlet
+INFO main com.push.m.push.NativeHttpClient - executing request http://192.168.0.186:8088/IMServer/servlet/PushMessageServlet
+INFO main com.push.m.push.NativeHttpClient - executing request http://192.168.0.186:8088/IMServer/servlet/PushMessageServlet
+INFO main com.push.m.push.NativeHttpClient - executing request http://192.168.0.186:8088/IMServer/servlet/PushMessageServlet

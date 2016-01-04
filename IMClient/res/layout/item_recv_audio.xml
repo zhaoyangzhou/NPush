@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 接收语音 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="13dp" >
+	
+    <TextView
+        android:id="@+id/sendTimeTxt"
+        style="@style/chat_text_date_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+    
+	<RelativeLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="5dp"
+	    android:paddingLeft="5dp"
+	    android:layout_gravity="center_vertical" >
+	    
+	    <com.push.m.widget.CircularImageView
+	        android:id="@+id/ivFriendHeader"
+	        android:layout_width="@dimen/header_size"
+	        android:layout_height="@dimen/header_size"
+	        android:src="@drawable/default_head"
+	        app:border="true"
+	        app:border_color="@color/lightgray"
+	        app:border_width="2dp"
+	        app:shadow="true" />
+	    
+	    <TextView 
+	        android:id="@+id/tvRecvMsg"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+		    android:layout_toRightOf="@+id/ivFriendHeader"
+	        android:gravity="left|center_vertical"
+	        android:layout_marginLeft="2dp"
+	        android:background="@drawable/receive_msg"
+	        android:minHeight="50dp"
+	        android:maxWidth="220dp" />
+	    
+        <ImageView
+            android:id="@+id/ivRecvVolumn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignRight="@+id/tvRecvMsg"
+	        android:layout_centerInParent="true"
+	        android:gravity="right|center_vertical"
+	        android:layout_marginRight="10dp"
+        	android:background="@drawable/receive_2" />
+        
+	    <TextView 
+	        android:id="@+id/tvRecvDuration"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" 
+	        android:layout_toRightOf="@+id/tvRecvMsg"
+	        android:layout_marginLeft="3dp"
+	        android:layout_centerVertical="true" />
+	    <ImageView 
+	        android:id="@+id/ivVoiceUnread"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toRightOf="@+id/tvRecvDuration"
+	        android:layout_marginLeft="3dp"
+	        android:layout_centerVertical="true"
+	        android:src="@drawable/voice_unread" />
+	</RelativeLayout>
+	
+</LinearLayout>
